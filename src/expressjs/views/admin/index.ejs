@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%- title %></title>
+    <%- include('../components/meta.ejs'); -%> <%-
+    include('../components/tailwindcss.ejs'); -%>
+  </head>
+  <body>
+    <%- include('../components/navbar.ejs', { path }) %>
+    <div class="p-3">
+      <a href="/shop/add-product" class="inline-flex w-[10rem] h-[10rem] bg-slate-100 text-sm hover:bg-slate-300 py-2 px-3 capitalize rounded-md">
+        <div class="font-medium text-primary grow flex justify-center items-center">
+          add product
+        </div>
+      </a>
+
+    </div>
+  </body>
+</html>
