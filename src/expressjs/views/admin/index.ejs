@@ -8,11 +8,19 @@
   <body>
     <%- include('../components/navbar.ejs', { path }) %>
     <div class="p-3">
-      <a href="/shop/add-product" class="inline-flex w-[10rem] h-[10rem] bg-slate-100 text-sm hover:bg-slate-300 py-2 px-3 capitalize rounded-md">
-        <div class="font-medium text-primary grow flex justify-center items-center">
-          add product
-        </div>
-      </a>
+      <h1 class="text-3xl font-bold mb-3">Manage Products</h1>
+      <div class="flex gap-3 flex-wrap">
+        <% if (products.length > 0) { %>
+          <% products.forEach(function(product){ %>
+            <%- include('../components/product', { product: product, editable: true }) %>
+          <% }); %>
+          <% } %>
+          <a href="/admin/add-product" class="flex w-[15rem] h-[15rem] border-2 border-solid border-slate-800 text-sm hover:bg-slate-800 hover:text-slate-50 duration-100 py-2 px-3 capitalize rounded-md">
+            <div class="font-medium text-primary grow flex justify-center items-center">
+              + New
+            </div>
+          </a>
+      </div>
 
     </div>
   </body>

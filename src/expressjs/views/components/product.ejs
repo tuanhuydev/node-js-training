@@ -1,0 +1,24 @@
+
+<a href="/shop/products/<%= product.id %>">
+
+    <div class="rounded-md border border-solid w-[15rem] cursor-pointer transition-all hover:shadow-md p-2">
+        <img src="/image/thumbnail.jpg" alt="product image" class="block rounded-md">
+        <h3 class="my-2 text-xl capitalize font-bold"><%- product.name %></h3>
+        <h6>$<%- product.price ?? "Free" -%></h6>
+        <% if (editable) { %>
+            <div class="flex justify-end gap-3 mt-3">
+                <a href="/admin/edit-product/<%= product.id %>" class="block text-primary p-2 border border-solid rounded-md border-slate-500 capitalize">edit</a>
+                <form method="POST" action="/admin/delete-product/<%= product.id %>">
+                    <button
+                    class="p-2 border border-solid rounded-md bg-slate-900 border-slate-500 text-slate-50 capitalize"
+                  >
+                    delete
+                  </button>
+                </form>
+            </div>
+        
+        <% } else  { %>
+            <p class="line-clamp-3"><%- product.description ?? "" -%></p>
+        <% } %>
+    </div>
+</a>

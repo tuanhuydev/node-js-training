@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Add Product</title>
+    <%- include('../components/meta.ejs'); -%> <%-
+    include('../components/tailwindcss.ejs'); -%>
+  </head>
+  <body>
+    <%- include('../components/navbar.ejs', { title: "Add Product", path: '/shop/add-product' }) %>
+    <div class="flex items-center justify-center gap-3 h-screen">
+      <form
+        action="<% if (editable) { %> 
+          /admin/edit-product/<%= product.id %> 
+        <% } else { %>
+          /admin/add-product
+        <% } %>"
+        method="post"
+        class="block p-5 shadow-md w-[25rem] flex flex-col gap-3"
+      >
+      <h1 class="font-bold text-3xl">
+        <% if (editable) { %>Update Product<% } else { %>Create Product<%  } %>
+      </h1>
+        <div class="form-control">
+          <div
+            class="px-4 py-2 border-1 py-1 focus:outline-none border rounded-md border-solid border-slate-500"
+          >
+            <input
+              type="text"
+              name="name"
+              class="focus:outline-none w-full"
+              placeholder="Title"
+              value="<% if (editable) {%><%= product.name %><% } %>"
+            />
+          </div>
+        </div>
+        <div class="form-control">
+          <div
+            class="px-4 py-2 border-1 py-1 focus:outline-none border rounded-md border-solid border-slate-500"
+          >
+          <input
+          type="number"
+          name="price"
+          step="0.01"
+          class="focus:outline-none w-full"
+          placeholder="Price"
+          value="<% if (editable) {%><%= product.price %><% } %>"
+        />
+          </div>
+        </div>
+        <div class="form-control">
+          <div
+            class="px-4 py-2 border-1 py-1 focus:outline-none border rounded-md border-solid border-slate-500"
+          >
+            <textarea
+              name="description"
+              rezise="none"
+              class="focus:outline-none w-full"
+              placeholder="Description"
+           ><% if (editable) {%><%= product.name %><% }%></textarea>
+          </div>
+        </div>
+        <button
+          class="px-4 py-2 border border-solid rounded-md bg-slate-900 border-slate-500 text-slate-50"
+        >
+        <% if (editable) { %>
+          Update Product
+        <%} else { %>
+          Add Product
+        <%} %>
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

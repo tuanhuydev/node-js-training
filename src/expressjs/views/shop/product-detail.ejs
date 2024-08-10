@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <%- include('../components/meta') %> <%-
+    include('../components/tailwindcss.ejs'); -%>
+    <title><%= product.name %></title>
+  </head>
+  <body>
+    <%- include("../components/navbar", { path: '/products' }) %>
+    <div class="w-full min-h-screen/2 p-5 grid grid-cols-12 gap-5">
+        <div class="col-span-7">
+            <img src="/image/thumbnail.jpg" alt="product image" class="block rounded-md">
+        </div>
+        <div class="col-span-5 flex flex-col">
+          <h1 class="my-2 text-3xl capitalize font-bold whitespace-nowrap overflow-hidden overflow-ellipsis"><%- product.name %></h1> <!-- Modified code -->
+          <h6>$<%- product.price ?? "Free" -%></h6>
+          <p class="line-clamp>3"><%- product.description ?? "" -%></p>
+          <form action="/shop/add-to-cart/<%- product.id %>" method="post" class="mt-auto block">
+            <button class="p-2 border border-solid rounded-md bg-slate-900 border-slate-500 text-slate-50 capitalize w-full">Add to Cart</button>
+          </form>
+        </div>
+        </div>
+    </div>
+    </body>
+</html>

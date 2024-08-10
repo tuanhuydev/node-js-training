@@ -12,7 +12,7 @@
     <div class="px-5 py-3 flex gap-3 flex-wrap">
       <% if (products.length > 0) { %>
         <% products.forEach(function(product){ %>
-          <%- include('../components/item', { product: product }) %>
+          <%- include('../components/product', { product: product, editable: false }) %>
         <% }); %>
         <% } else { %>
           <div class="w-full text-center text-lg text-slate-800">
